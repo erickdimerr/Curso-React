@@ -8,8 +8,6 @@ import Fragments from './components/Fragments';
 import Container from './components/Container';
 
 
-//teste
-
 function App() {
   const cars = [
     { id: 1, brand: "Ferrari", color: "Amarelo", km: 0 },

@@ -9,8 +9,6 @@ const Events = () => {
   }
 
 
-  //testando github
-
   return (
     <div>
       <div>
