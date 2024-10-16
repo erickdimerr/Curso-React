@@ -1,6 +1,6 @@
 import './StartScreen.css'
 
-const StartScrenn = ({startGame}) => {
+const StarScreen = ({startGame}) => {
   return (
     <div className='start'>
         <h1>Secret Word</h1>
@@ -10,4 +10,4 @@ const StartScrenn = ({startGame}) => {
   )
 }
 
-export default StartScrenn
+export default StarScreen

@@ -1,17 +1,16 @@
 import './App.css'
 import { useCallback, useEffect, useState } from "react";
-import StartScrenn from './components/StartScreen'
+import StarScreen from './components/StartScreen'
 import { wordsList } from "./data/words";
 import Game from './components/Game';
 import GameOver from './components/GameOver';
-
 
 const stages = [
   {id:1, name:'start'}, 
   {id:2, name:'game'}, 
   {id:3, name:'end'}, 
 ]
- //teste
+
 function App() {
 
   const [gameStage, setGameStage] = useState(stages[0].name)
@@ -21,8 +20,33 @@ function App() {
   const [pickedCategory, setPickedCategory] = useState('')
   const [letters, setLetters] = useState([])
 
+  const pickWordAndCategory = () => {
+    const categories = Object.keys(words)
+    const category = categories[Math.floor(Math.random()* Object.keys(categories).length)]
+    console.log(category)
+
+    const word = words[category][Math.floor(Math.random()* words[category].length)]
+    console.log(word)
+
+    return {word, category}
+  }
+
   //Iniciar o jogo
   const startGame = () => {
+
+    const {word, category} = pickWordAndCategory()
+
+    let wordLetters = word.split("")
+    wordLetters = wordLetters.map((l) => l.toLowerCase())
+
+    console.log(word, category)
+    console.log(wordLetters)
+
+    //Filtrando
+    setPickedWord(word)
+    setPickedCategory(category)
+    setLetters(letters)
+
     setGameStage(stages[1].name)
   }
 
@@ -39,7 +63,7 @@ function App() {
   return (
     <>
       <div className='App'>
-          {gameStage === 'start' && <StartScrenn startGame={startGame} />}
+          {gameStage === 'start' && <StarScreen startGame={startGame} />}
           {gameStage === 'game' && <Game verifyLetter={verifyLetter} />}
           {gameStage === 'end' && <GameOver retry={retry}/>}
       </div>
